@@ -1,0 +1,21 @@
+h1 {
+    text-align: right;
+    width: 50%;
+    /* font-weight: 400; */
+    text-decoration: blue underline wavy;
+    /* text-decoration: overline; */
+    letter-spacing: 10px;
+    font-size: 70px;
+    /* example of a font stack */
+    font-family: Arial, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    text-align: center;
+    font-weight: 400; /*normal weight*/
+    line-height: 1.5;
+}
+
+a  {
+    text-decoration: none;
+}

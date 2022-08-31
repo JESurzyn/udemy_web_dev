@@ -1,0 +1,23 @@
+body {
+    color: purple;
+}
+
+/* h1 {
+    color: blue;
+} */
+
+section {
+    color: aqua
+}
+
+form {
+    color: greenyellow
+}
+
+button {
+    color: inherit
+}
+
+input {
+    color: inherit
+}

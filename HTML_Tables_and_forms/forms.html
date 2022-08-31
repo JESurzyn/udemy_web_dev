@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Demo</title>
+</head>
+
+<body>
+    <h1>Forms Demo</h1>
+    <button>Button outside the form</button>
+    <form action="/tacos">
+        <button type="button">This button should not submit the form!</button>
+        <button type="submit">This button will submit the form</button>
+        <p>
+            <label for="username">Enter a Username</label>
+            <input type="text" placeholder="username" id="username" name="username">
+        </p>
+
+        <p>
+            <label for="password">Enter your password</label>
+            <input type="password" placeholder="enter password" id="password" name="password">
+        </p>
+
+        <p>
+            <label for="color">Pick a color</label>
+            <input type="color" id="color" name="color">
+        </p>
+
+        <p>
+            <label for="number">Select a number</label>
+            <input type="number" placeholder="Enter a number" id="number" name="number" min="1" max="100" step="5">
+        </p>
+        <button>Submit</button>
+
+        <!-- using submit input is possibly not good practice -->
+        <input type="submit">
+        <input type="submit" value="Alt Submit">
+
+    </form>
+    <h2>Hijacking Searches</h2>
+    <h3>Search Reddit</h3>
+    <form action="https://www.reddit.com/search/">
+        <input type="text" name="q">
+        <button>Search Reddit</button>
+    </form>
+    <h3>Search Google</h3>
+    <form action="https://www.google.com/search?">
+        <input type="text" name="q">
+        <button>Search Google</button>
+    </form>
+    <h3>Search Youtube</h3>
+    <form action="https://www.youtube.com/results?">
+        <input type="text" name="search_query">
+        <button>Search Youtube</button>
+    </form>
+
+    <h2>More Inputs!</h2>
+    <form action="/birds">
+        <h3>Check Boxes</h3>
+        <input type="checkbox" name="agree_tos" id="agree" checked>
+        <label for="agree">I agree to everything here</label>
+        <button>Submit</button>
+
+        <h3>Radio Buttons</h3>
+        <p>
+            <label for="s">S</label>
+            <input type="radio" name="size" id="s" value="s">
+            <label for="s">M</label>
+            <input type="radio" name="size" id="M" value="m">
+            <label for="L">L</label>
+            <input type="radio" name="size" id="L" value="l">
+            <button>Submit</button>
+        </p>
+
+        <h3>Selects</h3>
+        <p>
+            <label for="entree">Please select an entree</label>
+            <select name="entree" id="entree">
+                <option value="">--Please Select and option--</option>
+                <option value="fish">Fish</option>
+                <option value="chicken">Chicken</option>
+                <!-- notice this option is preselected -->
+                <option value="steak" selected>Steak</option>
+            </select>
+            <button>Submit</button>
+        </p>
+        <h3>Range</h3>
+        <p>
+            <label for="cheese">Select Cheese amount</label>
+            <input type="range" name="cheese" id="cheese" min="1" max="10" step="2" value="7">
+            <button>Submit</button>
+        </p>
+
+        <h3>Text area</h3>
+        <p>
+            <label for="requests">Any special requests</label>
+            <br>
+            <textarea name="requests" id="requests" cols="30" rows="10" placeholder="Type somethng here"></textarea>
+        </p>
+
+    </form>
+    <h2>Validation Demo</h2>
+    <form action="/dummy">
+        <div>
+            <label for="first">Enter First Name</label>
+            <input type="text" name="first" id="first" required>
+        </div>
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required minlength="3" maxlength="20">
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="url">url</label>
+            <input type="url" id="url" name="url" required>
+        </div>
+        <button>Submit</button>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+/* universal selector */
+/* * {
+    color: pink;
+    background-color: cyan;
+} */
+
+body {
+    background-color: #f1faee;
+}
+
+button {
+    background-color: #a8dadc;
+    font-size: 30px;
+}
+
+h1, h2 {
+    color: #1d3557;
+}
+/* id selector */
+#signup{
+    background-color: #1d3557;
+    color :#f1faee;
+}
+
+span {
+    color: #457b9c;
+}
+
+/* class selector */
+.tags {
+    background-color: #e63946;
+    color: #a8dadc;
+    font-size: 18px;
+}
+
+/* general descendent selectors */
+.post a {
+    color: #457b9c; 
+    text-decoration: none;
+    font-weight: 700
+}
+
+footer a {
+    color: #e63946;
+}
+
+/* adjacent combinator */
+h2 + button {
+    font-size: 20px;
+}
+
+/* direct child combinator NOTE compare to general descendant selector*/
+footer > a {
+    color: #457b9c;
+}
+
+/*attribute selector*/
+input[type="password"] {
+    color: green;
+}
+
+a[href*="google"] {
+    color: magenta;
+}
+
+/* psuedo classes */
+.post button:hover {
+    background-color: #e63946;
+    color:#f1faee
+}
+
+.post button:active {
+    background-color:lightgreen;
+}
+
+.post a:hover {
+    text-decoration: underline;
+}
+
+.post:nth-last-of-type(2n) {
+    background-color: #dfe8dc;
+}
+
+/* psuedo elements */
+h2::first-letter {
+    font-size: 40px;
+}
+
+p::first-line {
+    color:purple
+}
+
+p::selection {
+    background-color: darkorange;
+}
+
+/* looking at specificity */
+/* order of specificity
+id > class > element */
+
+button:hover {
+    background-color: olive;
+    font-size: 40px;
+}
+
+.post button:hover {
+    background-color: #e63946;
+    color:#f1faee
+}
+
+#signup{
+    background-color: #1d3557;
+    color :#f1faee;
