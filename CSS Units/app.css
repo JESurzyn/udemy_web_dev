@@ -1,17 +1,82 @@
-section {
+html {
+    font-size: 10px;
+}
+
+#percentages {
     background-color: #6d6875;
     width: 200px;
     height: 200px;
 }
 
-div {
+#percentages div {
     background-color: #e5989b;
     width: 50%;
     height: 50%;
 }
 
-h1 {
+# percentages h1 {
     font-size: 40px;
     border: 1px solid black;
     line-height: 200%;
+}
+
+/* EMs */
+/* parent  from which the font size of the headers is derived */
+#ems {
+    font-size: 20px;
+}
+
+/*when em is used for margin, the size of the attribute (such as margin)
+is relative to the elemment itself, the h2 in the below case*/
+#ems h2 {
+    font-size: 2em;
+    margin-left:1em;
+}
+
+#ems h3 {
+    font-size: 1.5em;
+}
+
+#ems p {
+    font-size: 1em;
+}
+
+#ems ul {
+    font-size: 1.5em;
+}
+
+/* example of not using relative units */
+/* button {
+    font-size: 30px;
+    padding: 0 30px;
+    border-radius: 15px;
+    background-color: green;
+    color: white;
+} */
+
+/* using relative units */
+
+ button {
+    font-size: 1em;
+    padding: 0 1em;
+    border-radius: 0.5em;
+    background-color: green;
+    color: white;
+}
+
+
+/* Using Rems is how something looks relative to the the root (html element) */
+#rems h2 {
+    font-size: 3rem;
+}
+#rems h3 {
+    font-size: 2rem;
+}
+
+#rems ul {
+    font-size: 0.8rem;
+}
+
+#rems button {
+    font-size: 1.5rem;
 }
