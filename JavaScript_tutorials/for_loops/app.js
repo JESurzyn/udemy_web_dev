@@ -18,19 +18,44 @@
 //     console.log(i);
 // }
 
-let randoArray = [
-    'rand1',
-    'rand2',
-    'rand3',
-    'rand4',
-    'rand5',
-    'rand6',
+// let randoArray = [
+//     'rand1',
+//     'rand2',
+//     'rand3',
+//     'rand4',
+//     'rand5',
+//     'rand6',
+// ]
+
+// for (let i = 0; i < randoArray.length; i++) {
+//     console.log(randoArray[i]);
+// }
+
+// for (let i = randoArray.length -1; i >= 0; i--) {
+//     console.log(randoArray[i]);
+// }
+
+
+// neststed loops
+
+const seatingChart = [
+    ['Kristen', 'Erik', 'Namita'],
+    ['Geoffrey', 'Juanita', 'Antonio', 'Kevin'],
+    ['Yuma', 'Sakura', 'Jack', 'Erika']
 ]
 
-for (let i = 0; i < randoArray.length; i++) {
-    console.log(randoArray[i]);
-}
+// for (i = 0; i < seatingChart.length; i++) {
+//     for (j = 0; j < seatingChart[i].length; j++) {
+//         console.log(seatingChart[i][j])
+//     }
+// }
 
-for (let i = randoArray.length -1; i >= 0; i--) {
-    console.log(randoArray[i]);
+// a more explicit way to do the above loop
+
+for (i = 0; i < seatingChart.length; i++) {
+    const row = seatingChart[i];
+    console.log(`ROW ${i+1}:`)
+    for (j = 0; j < row.length; j++) {
+        console.log(`     ${row[j]}`)
+    }
 }
