@@ -1,5 +1,5 @@
 let input = ''
-let tdList = []
+const tdList = []
 while(input !== 'quit') {
     input = prompt('What would you like to do?');
     if (input ==='new') {
