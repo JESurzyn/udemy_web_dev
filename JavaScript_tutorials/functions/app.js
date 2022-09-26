@@ -39,6 +39,25 @@ function add(x,y) {
 
 const square = function(num) {return num*num;}
 
+//the arrow function syntax of a function expression
+const square2 = (num) => {return num*num}
+
+const square3 = num => {return num*num} //this is the same as the abpve, but only works with only 1 param
+
+const add2 = (x,y) => {return x+y}
+
+const rollDie2 = () => {
+    return Math.floor(Math.randon() * 6) + 1;
+}
+//IMPLICIT RETURNS FOR ARROW FUNCTION SYNTAX
+//difference is using another pair of parens instead of curly braces
+const rollDie3 = () => (
+    Math.floor(Math.random() * 6) + 1
+)
+//or not using parens at all if it is appropriate to fit on one line (only works with one expression functions)
+const add3 = (x,y) => x+y;
+
+
 
 ///////// examples of higher order functions//////
 // - functions that accept functions as arguments
