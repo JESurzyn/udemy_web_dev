@@ -112,3 +112,13 @@ function makeBetweenFunc(min, max) {
         }
     }
 }
+
+//example of functions with default parameters
+function rollDie4(numSides=6) {
+    return Math.floor(Math.random() * numSides) + 1
+}
+//not that order matters so default parameters should come after
+//non default parameters
+function greet(person, msg = "Hey, there") {
+    console.log(`${msg}, ${person}!`);
+}

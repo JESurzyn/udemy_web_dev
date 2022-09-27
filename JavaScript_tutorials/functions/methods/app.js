@@ -38,3 +38,29 @@ const cat = {
 }
 
 const meow2 = cat.meow;
+
+
+//return of the 'this' keyword
+//below is just to illustrate that 'this' works differently when called in an arrow function vs.
+//when referred to in regular function syntax
+
+//for arrow functions 'this' is defined by the scope where the function in defined
+//for normal function syntax 'this' is defined by the scope where the function is executed
+const person = {
+    firstName: 'Viggo',
+    lastName: 'Mortenson',
+    fullNameWorks: function() {
+        return `${this.firstName} ${this.lastName}`
+    },
+    fullNameUndefined: () => {
+        return `${this.firstName} ${this.lastName}`
+    },
+    shoutName: function() {
+        setTimeout(() => {
+            console.log(this); 
+            console.log(this.fullNameWorks());
+            console.log(this.fullNameUndefined());
+        }, 3000)
+    }
+
+}
