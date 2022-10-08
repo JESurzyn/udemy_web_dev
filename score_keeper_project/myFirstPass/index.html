@@ -5,34 +5,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <title>Ping Pong Score Keepe</title>
 </head>
 
 <body>
-    <div id="gameTitle">
-        <p>Ping Pong Score Keeper</p>
-    </div>
-    <div id="gameInterface">
-        <h1><span id="scoreOne">0</span><span> to </span><span id = "scoreTwo">0</span></h1>
-        <p>Use the buttons below to keep score</p>
-        <label for="scoreLimit">Playing to</label>
-        <!-- <input type="number" id="scoreLimit" min="1" max="21" value="1"> -->
-        <select name="scoreLimit" id="scoreLimit">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-        </select>
-    </div>
+    <section class="section">  
+        <div class="container"> 
+            <div class="column is-half is-offset-one-quarter">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-2by1">
+                            <img src="https://images.unsplash.com/photo-1534158914592-062992fbe900?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1799&q=80"
+                            alt="">
+                        </figure>
+                    </div>
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            Ping Pong Score Keeper
+                        </p>
+                        <button class="card-header-icon" aria-label="more options">
+                            <span class="icon">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <h1 class="title is-1"><span id="scoreOne">0</span><span> to </span><span
+                                    id="scoreTwo">0</span></h1>
+                            <p class="subtitle">Use the buttons below to keep score</p>
+                            <label for="scoreLimit" class="label is-large is-inline">Playing to</label>
+                            <!-- <input type="number" id="scoreLimit" min="1" max="21" value="1"> -->
+                            <div class="select is-rounded">
+                                <select name="scoreLimit" id="scoreLimit"=>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <button class="button card-footer-item is-primary" type="button" id="p1">+1 Player One</button>
+                        <button class="button card-footer-item is-info" type="button" id="p2">+1 Player Two</button>
+                        <button class="button card-footer-item is-danger" type="button" id="reset">Reset</button>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div id="buttonDiv">
-        <button type="button" id="p1">+1 Player One</button>
-        <button type="button" id="p2">+1 Player Two</button>
-        <button type="button" id="reset">Reset</button>
-    </div>
 
     <script src="app.js"></script>
 </body>
