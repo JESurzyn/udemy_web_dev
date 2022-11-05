@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %> 
+
+<%- include('partials/navbar') %> 
+    <!-- example of running a loop using ejs -->
+    <h1>All the Cats</h1>
+    <ul>
+        <% for(let cat of cats) { %>
+            <li>
+                <%=cat%>
+            </li>
+            <%} %>
+    </ul>
+    <%- include('partials/footer') %> 
