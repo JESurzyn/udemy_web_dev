@@ -7,7 +7,7 @@ mongoose.connect('mongodb://localhost:27017/farmStand')
     })
     .catch(e => {
         console.log("OH NO MONGO CONNECTION ERROR!!!!")
-        console.log(err)
+        console.log(e)
     })
 
 //adding one at a time
