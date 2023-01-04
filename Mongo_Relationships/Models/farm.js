@@ -1,0 +1,63 @@
+const mongoose = require('mongoose');
+const {Schema} = mongoose;
+//promise structure below is for initial connection error handling
+mongoose.connect('mongodb://localhost:27017/relationshipDemo')
+    .then(() => {
+        console.log("MONGO CONNECTION OPEN")
+    })
+    .catch((e) => {
+        console.log("MONGO CONNECTION FAILED!!")
+        console.log(e);
+    });
+
+//TODO: look up the block of code below -> tutorials haven't used this before
+//--documentation indicates this block is for handling errors after the initial connection
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+    console.log("Database connected");
+});
+
+const productSchema = new Schema({
+    name: String,
+    price: Number,
+    season: {
+        type:String,
+        enum: ['Spring', 'Summer', 'Fall', 'Winter']
+    }
+});
+
+const farmSchema = new Schema({
+    name:String,
+    city: String,
+    products: [{type:Schema.Types.ObjectId, ref:'Product'}]
+})
+
+const Product = mongoose.model('Product', productSchema);
+const Farm = mongoose.model('Farm', farmSchema);
+
+// Product.insertMany([
+//     {name: 'Goddess Melon', price: 4.99, season: 'Summer'},
+//     {name: 'Sugar Baby Watermelon', price: 4.99, season: 'Summer'},
+//     {name: 'Asparagus', price: 3.99, season: 'Spring'}
+// ])
+
+// const makeFarm = async () => {
+//     const farm = new Farm({name: 'Full Belly Farm', city:'Guinda, CA'})
+//     const melon = await Product.findOne({name: 'Goddess Melon'});
+//     farm.products.push(melon);
+//     await farm.save(); 
+//     console.log(farm);
+// }
+
+// makeFarm()
+
+const addProduct = async () => {
+    const farm = await Farm.findOne({name: 'Full Belly Farm'});
+    const watermelon = await Product.findOne({name: 'Sugar Baby Watermelon'});
+    farm.products.push(watermelon);
+    await farm.save();
+    console.log(farm);
+}
+
+addProduct();
