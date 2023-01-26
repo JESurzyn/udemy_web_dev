@@ -20,6 +20,14 @@ app.set('views', 'views');
 app.use(express.urlencoded({extended:true}))
 app.use(session({secret:'notagoodsecret'}))
 
+//login middleware
+const requireLogin = (req, res, next) => {
+    if(!req.session.user_id) {
+        return res.redirect('/login')
+    }
+    next();
+}
+
 app.get('/', (req, res) => {
     res.send('THIS IS THE HOME PAGE')
 })
@@ -28,13 +36,24 @@ app.get('/register', (req, res) => {
     res.render('register')
 })
 
+// app.post('/register', async (req, res) => {
+//     const {username, password} = req.body;
+//     const hash = await bcrypt.hash(password, 12);
+//     const user = new User({
+//         username,
+//         password: hash
+//     })
+//     await user.save();
+//     // const foundUser = await User.findOne({username});
+//     req.session.user_id = user._id;
+//     res.redirect('/secret')
+// })
+
+//refactored to move password hashing to user model via Mongoose middleware
 app.post('/register', async (req, res) => {
     const {username, password} = req.body;
-    const hash = await bcrypt.hash(password, 12);
-    const user = new User({
-        username,
-        password: hash
-    })
+    // const hash = await bcrypt.hash(password, 12);
+    const user = new User({ username, password})
     await user.save();
     // const foundUser = await User.findOne({username});
     req.session.user_id = user._id;
@@ -47,15 +66,22 @@ app.get('/login', (req, res) => {
 app.post('/login', async (req, res) => {
     // res.send(req.body)
     const {username, password} = req.body;
-    const user = await User.findOne({username});
-    const validPassword = await bcrypt.compare(password, user.password);
-    if(validPassword) {
-        req.session.user_id = user._id;
-        // res.send("YAY WELCOME!!!")
+    // const user = await User.findOne({username});
+    // const validPassword = await bcrypt.compare(password, user.password);
+    const foundUser = await User.findAndValidate(username, password); //method created on user model using statics
+    // if(validPassword) {
+    //     req.session.user_id = user._id;
+    //     // res.send("YAY WELCOME!!!")
+    //     res.redirect('/secret');
+    // } else {
+    //     res.redirect('/login');
+        // res.send('TRY AGAIN')
+    // }
+    if(foundUser) {
+        req.session.user_id = foundUser._id;
         res.redirect('/secret');
     } else {
-        res.redirect('/login');
-        // res.send('TRY AGAIN')
+        res.redirect('/login')
     }
 })
 
@@ -65,11 +91,18 @@ app.post('/logout', (req, res) => {
     res.redirect('/login')
 })
 
-app.get('/secret', (req, res) => {
-    if(!req.session.user_id) {
-        res.redirect('/login')
-    }
+// app.get('/secret', (req, res) => {
+//     if(!req.session.user_id) {
+//         res.redirect('/login')
+//     }
+//     res.render('secret')
+// })
+app.get('/secret', requireLogin, (req, res) => {
     res.render('secret')
+})
+
+app.get('/topsecret', requireLogin, (req, res) => {
+    res.send('TOP SECRET')
 })
 
 app.listen(3000, () => {
